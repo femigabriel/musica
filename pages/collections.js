@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import Header from "../component/home/Header";
 import SideBar from "../component/home/SideBar";
 import AudioPlayer from "../component/home/AudioPlayer";
 import MyCollection from "../component/collections/MyCollection";
+import { MusicContext } from "../component/MusicContext";
 
 function collections() {
   return (

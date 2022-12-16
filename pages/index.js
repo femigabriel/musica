@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useContext, useState } from 'react';
+import React, { useContext } from "react";
 import AudioPlayer from "../component/home/AudioPlayer";
 import ChartCard from "../component/home/ChartCard";
 import Header from "../component/home/Header";
@@ -8,11 +8,10 @@ import SideBar from "../component/home/SideBar";
 import Main from "../component/Main";
 import MobiHeader from "../component/mobile/MobiHeader";
 import MobileMain from "../component/mobile/MobileMain";
-// import {data} from "../component/Songs"
-
+import {MusicContext} from "../component/MusicContext";
 
 export default function Home() {
-  // const { state } = useContext(data);
+  const msg = useContext(MusicContext);
   return (
     <>
       <Head>
@@ -28,6 +27,7 @@ export default function Home() {
       <>
         <div className="pl-10 pr-10 p-5 w-full pb-10 main-app ">
           <div className="">
+            {/* <span>{msg}</span> */}
             <Header />
             <div className="flex pt-10 w-full">
               <SideBar />
@@ -41,10 +41,42 @@ export default function Home() {
           <AudioPlayer />
         </div>
       </>
-      {/* <div className="home-mobi">
+      <div className="home-mobi">
         <MobiHeader />
         <MobileMain />
-      </div> */}
+      </div>
     </>
   );
 }
+
+// import React, { useContext } from "react";
+// import { UserContext } from "../component/useContext/UserContext";
+// import { login } from "../component/useContext/Login";
+// import {AfroMusic} from '../component/AfroMusic'
+
+// function index() {
+//   const { user, setUser } = useContext(UserContext);
+//   return (
+//     <div>
+//       <h2 className="text-red-300">Home</h2>
+//       <span>{JSON.stringify(user, null, 2)}</span>
+//       <br></br>
+//       {user ? (
+//         <button onClick={() => {
+//           setUser(null)
+//         }}>logout</button>
+//       ) : (
+//         <button
+//           onClick={async () => {
+//             const user = await login();
+//             setUser(user);
+//           }}
+//         >
+//           login
+//         </button>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default index;

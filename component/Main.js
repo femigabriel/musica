@@ -4,7 +4,7 @@ const Vector = "/images/Vector.png";
 const likes = "/images/likes.png";
 // import { BsHeart } from "react-icons/bs";
 
-function Main() {
+function Main({}) {
   return (
     <>
       <div className="w-full m">

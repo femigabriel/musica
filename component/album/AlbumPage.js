@@ -1,44 +1,56 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import AlbumCard from "./AlbumCard";
 import AfroMusic from "../AfroMusic";
-// import AlbumCard from "./AlbumCard";
-
+import { MusicContext } from "../MusicContext";
 const album = "/images/album.png";
 const lead = "/images/lead.png";
 const Play = "/images/Play.png";
 const musicadd = "/images/musicadd.png";
 const Heart = "/images/Heart.png";
+const strokeheart = "/images/strokeheart.svg";
 
 function AlbumPage() {
-  console.log(AfroMusic)
+  const { playerDetail, setPlayerDetail } = useContext(MusicContext);
+  console.log({ playerDetail });
+  // return
+
+  const handleClick = (boboyen) => {
+    setPlayerDetail(boboyen);
+    console.log("working");
+  };
+
   const albumbs = AfroMusic.map((track, index) => {
     return (
       <AlbumCard
         key={track.key}
         index={index}
         title={track.title}
-        artist={track.subtitle}
+        artist={track.share.subject}
         trackImg={track.share.image}
         url={track.hub.actions[1].uri}
-        musicCategory={'Single'}
-        duration={233000}
-        // handleClick={trackPlay}
+        musicCategory={"Single"}
+        duration="3:34"
+        onClick={() => handleClick(track)}
       />
     );
   });
 
   return (
     <div className="w-full p-10">
-      <div className="flex ">
+      <div className="flex">
         <div className="flex">
-          <img src={lead} className="rounded-3xl mr-[1.875rem] mb-1" />
+          <img
+            src={playerDetail.share.image}
+            className="rounded-3xl mr-[1.875rem] mb-1 w-[284px] h-[288.97px]"
+          />
         </div>
         <div>
           <div className="pt-40">
-            <span className="text[#A4C7C6] text-4xl">Tomorrow’s tunes</span>
+            <span className="text[#A4C7C6] text-4xl">
+              {playerDetail.subtitle}
+            </span>
             <p className="text[#EFEEE0] text-md album-p">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit amet luctus venenatis
+              {playerDetail.share.subject}
             </p>
           </div>
           <div className="w-full text-sm pt-10 flex">
@@ -63,7 +75,12 @@ function AlbumPage() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap  mt-2">{albumbs}</div>
+
+      <div
+        className="flex flex-wrap pt-20  mt-2"
+      >
+        {albumbs}
+      </div>
     </div>
   );
 }

@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import AfroMusic from "../AfroMusic";
 import TopChart from "../TopChart";
 import CollectionCard from "./CollectionCard";
-
-
+import { MusicContext } from "../MusicContext";
 
 function MyCollection() {
+  const { playerDetail, setPlayerDetail } = useContext(MusicContext);
+  console.log({ playerDetail });
+
+  const handleClick = (boboyen) => {
+    setPlayerDetail(boboyen);
+    console.log("working");
+  };
+
   const collections = AfroMusic.map((track, index) => {
     return (
       <CollectionCard
@@ -16,8 +23,8 @@ function MyCollection() {
         trackImg={track.share.image}
         url={track.hub.actions[1].uri}
         // handleClick={trackPlay}
+        onClick={() => handleClick(track)}
       />
-   
     );
   });
   return (

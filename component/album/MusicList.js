@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import songs from "../Songs";
+import AfroMusic from "../AfriSongs";
+import { MusicContext } from "../MusicContext";
 function MusicList({ img, title, artist, url, index }) {
+  const {playTrack} = useContext(MusicContext)
+
 
   const handleClick = (e) => {
-    playTrack(e, TopMusic)
+    playTrack(e, AfroMusic)
 }  
   console.log(songs.playlist);
   return (
